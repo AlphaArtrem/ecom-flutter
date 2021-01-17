@@ -1,5 +1,6 @@
 import 'package:ecom_app_flutter/common/sizing.dart';
 import 'package:ecom_app_flutter/common/styles.dart';
+import 'package:ecom_app_flutter/screens/auth/log_in.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -93,6 +94,12 @@ class _SplashScreenState extends State<SplashScreen> {
                     ),
                     Expanded(child: Container()),
                     TextButton(
+                      onPressed: (){
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(builder: (context) => LogIn())
+                        );
+                      },
                       style: TextButton.styleFrom(
                         enableFeedback: true,
                         padding: EdgeInsets.symmetric(

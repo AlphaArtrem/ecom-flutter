@@ -14,10 +14,10 @@ class EComApp extends StatelessWidget {
       theme: ThemeData(
         textTheme: TextTheme(
           bodyText1: TextStyle(
-            color: kTextColor
+            color: kPrimaryColor
           ),
           bodyText2: TextStyle(
-              color: kTextColor
+              color: kPrimaryColor
           ),
         ),
         scaffoldBackgroundColor: Colors.white,
