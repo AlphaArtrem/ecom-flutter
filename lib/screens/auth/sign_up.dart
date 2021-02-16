@@ -1,17 +1,17 @@
 import 'package:ecom_app_flutter/common/sizing.dart';
 import 'package:ecom_app_flutter/common/styles.dart';
 import 'package:ecom_app_flutter/screens/auth/fields.dart';
-import 'package:ecom_app_flutter/screens/auth/sign_up.dart';
+import 'package:ecom_app_flutter/screens/auth/log_in.dart';
 import 'package:ecom_app_flutter/screens/home/home.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class LogIn extends StatefulWidget {
+class SignUp extends StatefulWidget {
   @override
-  _LogInState createState() => _LogInState();
+  _SignUpState createState() => _SignUpState();
 }
 
-class _LogInState extends State<LogIn> {
+class _SignUpState extends State<SignUp> {
   bool _remember = false;
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,7 @@ class _LogInState extends State<LogIn> {
           child: Container(
             height: Sizing.screenHeight,
             decoration: BoxDecoration(
-              gradient: kPrimaryGradientColor
+                gradient: kPrimaryGradientColor
             ),
             padding: EdgeInsets.only(
               top : Sizing.getProportionateScreenHeight(50),
@@ -33,7 +33,7 @@ class _LogInState extends State<LogIn> {
                     child: Column(
                       children: [
                         Text(
-                          "Log In",
+                          "Sign Up",
                           style: TextStyle(
                               color: Colors.white,
                               fontSize: Sizing.getProportionateScreenWidth(25),
@@ -45,7 +45,7 @@ class _LogInState extends State<LogIn> {
                           height: Sizing.getProportionateScreenHeight(8),
                         ),
                         Text(
-                          "Welcome Back",
+                          "Join Us",
                           style: TextStyle(
                               fontSize: Sizing.getProportionateScreenWidth(15),
                               fontWeight: FontWeight.w400,
@@ -79,27 +79,7 @@ class _LogInState extends State<LogIn> {
                                     SizedBox(height: Sizing.getProportionateScreenHeight(30)),
                                     buildPasswordFormField(),
                                     SizedBox(height: Sizing.getProportionateScreenHeight(30)),
-                                    Row(
-                                      children: [
-                                        Checkbox(
-                                          value: _remember,
-                                          activeColor: kPrimaryColor,
-                                          onChanged: (value) {
-                                            setState(() {
-                                              _remember = value;
-                                            });
-                                          },
-                                        ),
-                                        Text("Remember me"),
-                                        Spacer(),
-                                        GestureDetector(
-                                          child: Text(
-                                            "Forgot Password",
-                                            style: TextStyle(decoration: TextDecoration.underline),
-                                          ),
-                                        )
-                                      ],
-                                    ),
+                                    buildPasswordFormField(hint: "Re-enter your password"),
                                   ],
                                 ),
                               ),
@@ -107,7 +87,7 @@ class _LogInState extends State<LogIn> {
                         ),
                         TextButton(
                           onPressed: (){
-                            Navigator.push(
+                            Navigator.pushReplacement(
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) => HomeScreen()
@@ -123,7 +103,7 @@ class _LogInState extends State<LogIn> {
                               backgroundColor: kPrimaryColor
                           ),
                           child: Text(
-                            "Login",
+                            "Sign Up",
                             style: TextStyle(
                                 fontSize: Sizing.getProportionateScreenWidth(25),
                                 fontWeight: FontWeight.w400,
@@ -136,27 +116,27 @@ class _LogInState extends State<LogIn> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                              "Don't have an account ? ",
+                              "Already have an account ? ",
                               style: TextStyle(color: Colors.grey),
                             ),
                             InkWell(
                               onTap: (){
                                 Navigator.pushReplacement(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => SignUp()
-                                  )
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => LogIn()
+                                    )
                                 );
                               },
                               child: Text(
-                                "Sign Up Here",
+                                "Log in Here",
                                 style: TextStyle(decoration: TextDecoration.underline),
                               ),
                             ),
                           ],
                         ),
                         Text(
-                          "Or Login With",
+                          "Or Sign Up With",
                           style: TextStyle(color: Colors.grey),
                         ),
                         SizedBox(height: Sizing.getProportionateScreenHeight(20)),
