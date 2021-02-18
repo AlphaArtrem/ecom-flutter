@@ -17,111 +17,118 @@ class _SplashScreenState extends State<SplashScreen> {
     Sizing().init(context);
     return Scaffold(
       body: SafeArea(
-        child: Padding(
-          padding: EdgeInsets.symmetric(
-            vertical : Sizing.getProportionateScreenHeight(50),
-          ),
-          child: Column(
-            children: [
-              Expanded(
-                flex: 3,
-                child: Column(
-                  children: [
-                    Text(
-                      "QuikieShops",
-                      style: TextStyle(
-                        color: kPrimaryColor,
-                        fontSize: Sizing.getProportionateScreenWidth(25),
-                        fontWeight: FontWeight.w700,
-                        letterSpacing: 1.5
-                      ),
-                    ),
-                    SizedBox(
-                      height: Sizing.getProportionateScreenHeight(8),
-                    ),
-                    Text(
-                      "Shop Quick. Shop Smart.",
-                      style: TextStyle(
-                        fontSize: Sizing.getProportionateScreenWidth(15),
-                        fontWeight: FontWeight.w400,
-                        color: Colors.grey
-                      ),
-                    ),
-                    SizedBox(
-                      height: Sizing.getProportionateScreenHeight(50),
-                    ),
-                    Expanded(
-                      child: PageView.builder(
-                        itemCount: 3,
-                        onPageChanged: (index){
-                          setState(() {
-                            _currentIndex = index;
-                          });
-                        },
-                        itemBuilder: (context, index){
-                          return SvgPicture.asset(
-                            "assets/splash_${index + 1}.svg",
-                          );
-                        },
-                      ),
-                    )
-                  ],
+        child: Stack(
+          children: [
+            Container(
+              height: Sizing.screenHeight,
+              width: Sizing.screenWidth,
+              child: Image.asset(
+                "assets/splash.jpg",
+                fit: BoxFit.cover,
+              ),
+            ),
+            Container(
+              height: Sizing.screenHeight,
+              width: Sizing.screenWidth,
+              color: kPrimaryColor.withOpacity(0.25),
+            ),
+            Container(
+              margin: EdgeInsets.only(
+                top: Sizing.screenHeight * 0.575,
+                left: Sizing.screenWidth * 0.35
+              ),
+              decoration: BoxDecoration(
+                color: Colors.yellow.withOpacity(0.5),
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(100)
                 )
               ),
-              Expanded(
-                flex: 2,
+              child: Container(),
+            ),
+            Container(
+              margin: EdgeInsets.only(
+                  top: Sizing.screenHeight * 0.65,
+              ),
+              decoration: BoxDecoration(
+                  gradient: kPrimaryGradientColor,
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(40),
+                      topRight: Radius.circular(40)
+                  )
+              ),
+              child: Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: Sizing.getProportionateScreenWidth(50),
+                  vertical: Sizing.getProportionateScreenHeight(30)
+                ),
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    SizedBox(
-                      height: Sizing.getProportionateScreenHeight(30),
-                    ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: List.generate(3, (index){
-                        return AnimatedContainer(
-                          duration: kAnimationDuration,
-                          margin: EdgeInsets.only(right: Sizing.getProportionateScreenWidth(5)),
-                          height: Sizing.getProportionateScreenHeight(6),
-                          width: Sizing.getProportionateScreenWidth(
-                            _currentIndex == index ? 20 : 6
-                          ),
-                          decoration: BoxDecoration(
-                            color: kPrimaryColor,
-                            borderRadius: BorderRadius.circular(3)
-                          ),
-                        );
-                      }),
-                    ),
-                    Expanded(child: Container()),
-                    TextButton(
-                      onPressed: (){
-                        Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(builder: (context) => LogIn())
-                        );
-                      },
-                      style: TextButton.styleFrom(
-                        enableFeedback: true,
-                        padding: EdgeInsets.symmetric(
-                          horizontal: Sizing.getProportionateScreenWidth(100),
-                          vertical: Sizing.getProportionateScreenHeight(10),
-                        ),
-                        backgroundColor: kPrimaryColor
-                      ),
-                      child: Text(
-                        "Continue",
-                        style: TextStyle(
+                      children: [
+                        Text(
+                          "Quickie",
+                          style: TextStyle(
+                            color: kTextColor,
                             fontSize: Sizing.getProportionateScreenWidth(25),
-                            fontWeight: FontWeight.w400,
-                            color: Colors.white
+                            fontWeight: FontWeight.bold
+                          ),
+                        ),
+                        Text(
+                          "Shop",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: Sizing.getProportionateScreenWidth(25),
+                            fontWeight: FontWeight.bold
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: Sizing.getProportionateScreenHeight(20),
+                    ),
+                    Flexible(
+                      child: Text(
+                        "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: Sizing.getProportionateScreenWidth(14),
+                          fontWeight: FontWeight.w400
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                    SizedBox(
+                      height: Sizing.getProportionateScreenHeight(40),
+                    ),
+                    MaterialButton(
+                      elevation: 0.0,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(5.0),
+                      ),
+                      onPressed: (){},
+                      color: Colors.yellow,
+                      textColor: Colors.white,
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(
+                         horizontal: Sizing.getProportionateScreenWidth(40)
+                        ),
+                        child: Text(
+                          "Get Started",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: Sizing.getProportionateScreenWidth(15),
+                              fontWeight: FontWeight.bold
+                          ),
                         ),
                       ),
                     ),
                   ],
                 ),
-              )
-            ],
-          ),
+              ),
+            )
+          ],
         ),
       ),
     );

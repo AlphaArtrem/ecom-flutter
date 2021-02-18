@@ -3,11 +3,9 @@ import 'package:flutter/material.dart';
 
 const kPrimaryColor = Colors.deepPurple;
 const kPrimaryLightColor = Colors.deepPurpleAccent;
-const kPrimaryGradientColor = LinearGradient(
-  begin: Alignment.topLeft,
-  end: Alignment.bottomRight,
-  colors: [Colors.deepPurpleAccent, Colors.deepPurple]
+final kPrimaryGradientColor = LinearGradient(
+  colors: [Colors.deepPurple, Colors.deepPurpleAccent.shade100]
 );
 const kSecondaryColor = Colors.purple;
-const kTextColor = Colors.purpleAccent;
+const kTextColor = Colors.yellow;
 const kAnimationDuration = Duration(milliseconds: 200);
