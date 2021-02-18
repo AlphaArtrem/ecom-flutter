@@ -22,15 +22,16 @@ class _SplashScreenState extends State<SplashScreen> {
           Container(
             height: Sizing.screenHeight,
             width: Sizing.screenWidth,
-            child: Image.asset(
-              "assets/splash.jpg",
-              fit: BoxFit.cover,
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage("assets/splash.jpg"),
+                fit: BoxFit.cover,
+                colorFilter: ColorFilter.mode(
+                    kPrimaryColor.withOpacity(0.5),
+                    BlendMode.color
+                )
+              )
             ),
-          ),
-          Container(
-            height: Sizing.screenHeight,
-            width: Sizing.screenWidth,
-            color: kPrimaryColor.withOpacity(0.25),
           ),
           Container(
             margin: EdgeInsets.only(
@@ -38,7 +39,7 @@ class _SplashScreenState extends State<SplashScreen> {
               left: Sizing.screenWidth * 0.35
             ),
             decoration: BoxDecoration(
-              color: Colors.yellow.withOpacity(0.5),
+              color: Color.fromRGBO(238, 213, 26, 0.5),
               borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(100)
               )
@@ -70,7 +71,7 @@ class _SplashScreenState extends State<SplashScreen> {
                       Text(
                         "Quickie",
                         style: TextStyle(
-                          color: kTextColor,
+                          color: Color.fromRGBO(238, 213, 26, 1),
                           fontSize: Sizing.getProportionateScreenWidth(25),
                           fontWeight: FontWeight.bold
                         ),

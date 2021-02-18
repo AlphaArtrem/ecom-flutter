@@ -58,7 +58,7 @@ class _PhoneAuthState extends State<PhoneAuth> {
               Text(
                 "Number?",
                 style: TextStyle(
-                    color: Colors.yellow,
+                    color: Color.fromRGBO(238, 213, 26, 1),
                     fontSize: Sizing.getProportionateScreenWidth(25),
                     fontWeight: FontWeight.w500,
                     decoration: TextDecoration.none,
@@ -231,7 +231,7 @@ class _PhoneAuthState extends State<PhoneAuth> {
               Text(
                 "Code",
                 style: TextStyle(
-                    color: Colors.yellow,
+                    color: Color.fromRGBO(238, 213, 26, 1),
                     fontSize: Sizing.getProportionateScreenWidth(25),
                     fontWeight: FontWeight.w500,
                     decoration: TextDecoration.none,

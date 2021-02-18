@@ -7,5 +7,5 @@ final kPrimaryGradientColor = LinearGradient(
   colors: [Colors.deepPurple, Colors.deepPurpleAccent.shade100]
 );
 const kSecondaryColor = Colors.purple;
-const kTextColor = Colors.yellow;
+const kTextColor = Color.fromRGBO(238, 213, 26, 1);
 const kAnimationDuration = Duration(milliseconds: 200);
