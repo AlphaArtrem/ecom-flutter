@@ -12,8 +12,9 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_svg: ^0.19.2+1
-
   cupertino_icons: ^1.0.0
+  country_code_picker: ^1.7.0
+  pin_code_fields: ^6.1.0
 
 dev_dependencies:
   flutter_test:
