@@ -1,4 +1,6 @@
 import 'package:ecom_app_flutter/common/styles.dart';
+import 'package:ecom_app_flutter/screens/home/home.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -35,31 +37,129 @@ class CustomBottomNavBar extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              IconButton(
-                icon: Icon(
-                  Icons.shopping_cart,
-                  color: 0 == selectedMenu
-                      ? kPrimaryColor
-                      : inActiveIconColor,
-                ),
-                onPressed: () => {},
+              Column(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  IconButton(
+                    padding: EdgeInsets.zero,
+                    icon: Icon(
+                      Icons.home,
+                      color: 0 == selectedMenu
+                          ? kPrimaryColor
+                          : inActiveIconColor,
+                    ),
+                    onPressed: () => {
+                      if(0 != selectedMenu){
+                            Navigator.pushReplacement(
+                            context,
+                            CupertinoPageRoute(
+                                builder: (context) => HomeScreen()
+                            )
+                        )
+                      }
+                    },
+                  ),
+                  Text(
+                    "Home",
+                    style: TextStyle(color: 0 == selectedMenu
+                        ? kPrimaryColor
+                        : inActiveIconColor,),
+                  )
+                ],
               ),
-              IconButton(
-                icon: Icon(Icons.thumb_up, color: inActiveIconColor,),
-                onPressed: () {},
+              Column(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  IconButton(
+                    padding: EdgeInsets.zero,
+                    icon: Icon(
+                      Icons.apps,
+                      color: 1 == selectedMenu
+                          ? kPrimaryColor
+                          : inActiveIconColor,
+                    ),
+                    onPressed: () => {
+                      if(1 != selectedMenu){
+                        Navigator.pushReplacement(
+                            context,
+                            CupertinoPageRoute(
+                                builder: (context) => HomeScreen()
+                            )
+                        )
+                      }
+                    },
+                  ),
+                  Text(
+                    "Catalogue",
+                    style: TextStyle(color: 1 == selectedMenu
+                        ? kPrimaryColor
+                        : inActiveIconColor,),
+                  )
+                ],
               ),
-              IconButton(
-                icon: Icon(Icons.chat, color: inActiveIconColor,),
-                onPressed: () {},
+              Column(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  IconButton(
+                    padding: EdgeInsets.zero,
+                    icon: Icon(
+                      Icons.thumb_up,
+                      color: 2 == selectedMenu
+                          ? kPrimaryColor
+                          : inActiveIconColor,
+                    ),
+                    onPressed: () => {
+                      if(2 != selectedMenu){
+                        Navigator.pushReplacement(
+                            context,
+                            CupertinoPageRoute(
+                                builder: (context) => HomeScreen()
+                            )
+                        )
+                      }
+                    },
+                  ),
+                  Text(
+                    "Liked",
+                    style: TextStyle(color: 2 == selectedMenu
+                        ? kPrimaryColor
+                        : inActiveIconColor,),
+                  )
+                ],
               ),
-              IconButton(
-                icon: Icon(
-                  Icons.account_circle,
-                  color: 1 == selectedMenu
-                      ? kPrimaryColor
-                      : inActiveIconColor,
-                ),
-                onPressed: () => {},
+              Column(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  IconButton(
+                    padding: EdgeInsets.zero,
+                    icon: Icon(
+                      Icons.account_circle,
+                      color: 3 == selectedMenu
+                          ? kPrimaryColor
+                          : inActiveIconColor,
+                    ),
+                    onPressed: () => {
+                      if(3 != selectedMenu){
+                        Navigator.pushReplacement(
+                            context,
+                            CupertinoPageRoute(
+                                builder: (context) => HomeScreen()
+                            )
+                        )
+                      }
+                    },
+                  ),
+                  Text(
+                    "Profile",
+                    style: TextStyle(color: 3 == selectedMenu
+                        ? kPrimaryColor
+                        : inActiveIconColor,),
+                  )
+                ],
               ),
             ],
           )),

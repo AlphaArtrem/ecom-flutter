@@ -1,6 +1,7 @@
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:ecom_app_flutter/common/sizing.dart';
 import 'package:ecom_app_flutter/common/styles.dart';
+import 'package:ecom_app_flutter/screens/home/home.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
@@ -343,7 +344,7 @@ class _PhoneAuthState extends State<PhoneAuth> {
                       Navigator.pushReplacement(
                           context,
                           CupertinoPageRoute(
-                              builder: (context) => PhoneAuth()
+                              builder: (context) => HomeScreen()
                           )
                       );
                     },
