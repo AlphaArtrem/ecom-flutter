@@ -12,6 +12,7 @@ class EComApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: "E-Com App",
       theme: ThemeData(
+          canvasColor: Colors.transparent,
         textTheme: TextTheme(
           bodyText1: TextStyle(
             color: kPrimaryColor

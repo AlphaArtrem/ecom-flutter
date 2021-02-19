@@ -16,6 +16,7 @@ dependencies:
   country_code_picker: ^1.7.0
   pin_code_fields: ^6.1.0
   carousel_slider: ^3.0.0
+  fluttertoast: ^7.1.8
 
 dev_dependencies:
   flutter_test:

@@ -2,7 +2,7 @@ import 'package:ecom_app_flutter/common/sizing.dart';
 import 'package:ecom_app_flutter/common/styles.dart';
 import 'package:ecom_app_flutter/screens/auth/fields.dart';
 import 'package:ecom_app_flutter/screens/auth/log_in.dart';
-import 'package:ecom_app_flutter/screens/home/home.dart';
+import 'package:ecom_app_flutter/screens/home/homeScreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 

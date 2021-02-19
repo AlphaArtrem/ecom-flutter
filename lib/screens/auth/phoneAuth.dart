@@ -1,9 +1,10 @@
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:ecom_app_flutter/common/sizing.dart';
 import 'package:ecom_app_flutter/common/styles.dart';
-import 'package:ecom_app_flutter/screens/home/home.dart';
+import 'package:ecom_app_flutter/screens/home/homeScreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
 class PhoneAuth extends StatefulWidget {
@@ -175,7 +176,14 @@ class _PhoneAuthState extends State<PhoneAuth> {
                     height: Sizing.getProportionateScreenHeight(20),
                   ),
                   InkWell(
-                    onTap: (){},
+                    onTap: (){
+                      Navigator.pushReplacement(
+                          context,
+                          CupertinoPageRoute(
+                              builder: (context) => HomeScreen()
+                          )
+                      );
+                    },
                     child: Text(
                       "Skip",
                       style: TextStyle(
@@ -369,7 +377,17 @@ class _PhoneAuthState extends State<PhoneAuth> {
                     height: Sizing.getProportionateScreenHeight(20),
                   ),
                   InkWell(
-                    onTap: (){},
+                    onTap: () async{
+                      await Fluttertoast.showToast(
+                          msg: "OTP has been re-sent.",
+                          toastLength: Toast.LENGTH_SHORT,
+                          gravity: ToastGravity.BOTTOM,
+                          timeInSecForIosWeb: 1,
+                          backgroundColor: kPrimaryColor,
+                          textColor: Colors.white,
+                          fontSize: Sizing.getProportionateScreenWidth(15)
+                      );
+                    },
                     child: Text(
                       "Resend Code",
                       style: TextStyle(

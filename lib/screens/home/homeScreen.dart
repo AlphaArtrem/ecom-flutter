@@ -6,6 +6,8 @@ import 'package:ecom_app_flutter/static/categories.dart';
 import 'package:ecom_app_flutter/static/products.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:ecom_app_flutter/screens/products/productsScreen.dart';
+import 'package:ecom_app_flutter/screens/catagories/categoriesScreen.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -84,6 +86,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   height: Sizing.getProportionateScreenHeight(50),
                   child: Material(
+                    color: Colors.white,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(25)
                     ),
@@ -143,47 +146,58 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       itemCount: 2,
                       itemBuilder: (BuildContext context, int itemIndex, _) =>
-                          Container(
-                            padding: EdgeInsets.symmetric(
-                                horizontal: Sizing.getProportionateScreenWidth(20),
-                                vertical: Sizing.getProportionateScreenHeight(15)
-                            ),
-                            width: Sizing.screenWidth * 0.9,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10.0),
-                              image: DecorationImage(
-                                image: AssetImage(itemIndex % 2 == 0 ? "assets/fashion.jpg" :"assets/splash.jpg" ),
-                                fit: BoxFit.cover,
-                                colorFilter: ColorFilter.mode(
-                                    kPrimaryColor.withOpacity(0.5),
-                                    BlendMode.color
+                          InkWell(
+                            onTap: (){
+                              Navigator.push(
+                                  context,
+                                  CupertinoPageRoute(
+                                      builder: (context) =>
+                                          ProductsScreen(title: "Fashion Sale",)
+                                  )
+                              );
+                            },
+                            child: Container(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: Sizing.getProportionateScreenWidth(20),
+                                  vertical: Sizing.getProportionateScreenHeight(15)
+                              ),
+                              width: Sizing.screenWidth * 0.9,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10.0),
+                                image: DecorationImage(
+                                  image: AssetImage(itemIndex % 2 == 0 ? "assets/fashion.jpg" :"assets/splash.jpg" ),
+                                  fit: BoxFit.cover,
+                                  colorFilter: ColorFilter.mode(
+                                      kPrimaryColor.withOpacity(0.5),
+                                      BlendMode.color
+                                  ),
                                 ),
                               ),
-                            ),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  "Fashion Sale",
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: Sizing.getProportionateScreenWidth(25),
-                                      fontWeight: FontWeight.bold
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    "Fashion Sale",
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: Sizing.getProportionateScreenWidth(25),
+                                        fontWeight: FontWeight.bold
+                                    ),
                                   ),
-                                ),
-                                SizedBox(
-                                  height: Sizing.getProportionateScreenHeight(5),
-                                ),
-                                Text(
-                                  "See More",
-                                  style: TextStyle(
-                                      color: Color.fromRGBO(238, 213, 26, 1),
-                                      fontSize: Sizing.getProportionateScreenWidth(15),
-                                      fontWeight: FontWeight.bold
+                                  SizedBox(
+                                    height: Sizing.getProportionateScreenHeight(5),
                                   ),
-                                ),
-                              ],
+                                  Text(
+                                    "See More",
+                                    style: TextStyle(
+                                        color: Color.fromRGBO(238, 213, 26, 1),
+                                        fontSize: Sizing.getProportionateScreenWidth(15),
+                                        fontWeight: FontWeight.bold
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                           )
                   ),
@@ -209,12 +223,23 @@ class _HomeScreenState extends State<HomeScreen> {
                                   fontWeight: FontWeight.bold
                               ),
                             ),
-                            Text(
-                              "See All",
-                              style: TextStyle(
-                                  color: Colors.grey,
-                                  fontSize: Sizing.getProportionateScreenWidth(12),
-                                  fontWeight: FontWeight.bold
+                            InkWell(
+                              onTap: (){
+                                Navigator.pushReplacement(
+                                    context,
+                                    CupertinoPageRoute(
+                                        builder: (context) =>
+                                            CategoriesScreen()
+                                    )
+                                );
+                              },
+                              child: Text(
+                                "See All",
+                                style: TextStyle(
+                                    color: Colors.grey,
+                                    fontSize: Sizing.getProportionateScreenWidth(12),
+                                    fontWeight: FontWeight.bold
+                                ),
                               ),
                             ),
                           ],
@@ -228,35 +253,46 @@ class _HomeScreenState extends State<HomeScreen> {
                               scrollDirection: Axis.horizontal,
                               itemCount: categoriesList.length,
                               itemBuilder: (context, index){
-                                return Container(
-                                  margin: EdgeInsets.symmetric(
-                                    horizontal: Sizing.getProportionateScreenWidth(5),
-                                  ),
-                                  padding: EdgeInsets.symmetric(
-                                      horizontal: Sizing.getProportionateScreenWidth(20),
-                                      vertical: Sizing.getProportionateScreenHeight(15)
-                                  ),
-                                  width: Sizing.screenWidth / 3,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(7.0),
-                                    image: DecorationImage(
-                                      image: AssetImage(categoriesList[categoriesList.keys.toList()[index]]),
-                                      fit: BoxFit.cover,
-                                      colorFilter: ColorFilter.mode(
-                                          kPrimaryColor.withOpacity(0.5),
-                                          BlendMode.color
+                                return InkWell(
+                                  onTap: (){
+                                    Navigator.push(
+                                        context,
+                                        CupertinoPageRoute(
+                                            builder: (context) =>
+                                                ProductsScreen(title: categoriesList.keys.toList()[index],)
+                                        )
+                                    );
+                                  },
+                                  child: Container(
+                                    margin: EdgeInsets.symmetric(
+                                      horizontal: Sizing.getProportionateScreenWidth(5),
+                                    ),
+                                    padding: EdgeInsets.symmetric(
+                                        horizontal: Sizing.getProportionateScreenWidth(20),
+                                        vertical: Sizing.getProportionateScreenHeight(15)
+                                    ),
+                                    width: Sizing.screenWidth / 3,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(7.0),
+                                      image: DecorationImage(
+                                        image: AssetImage(categoriesList[categoriesList.keys.toList()[index]]),
+                                        fit: BoxFit.cover,
+                                        colorFilter: ColorFilter.mode(
+                                            kPrimaryColor.withOpacity(0.5),
+                                            BlendMode.color
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                  child: Center(
-                                    child: Text(
-                                      categoriesList.keys.toList()[index],
-                                      style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: Sizing.getProportionateScreenWidth(12),
-                                          fontWeight: FontWeight.w400
+                                    child: Center(
+                                      child: Text(
+                                        categoriesList.keys.toList()[index],
+                                        style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: Sizing.getProportionateScreenWidth(12),
+                                            fontWeight: FontWeight.w400
+                                        ),
+                                        textAlign: TextAlign.center,
                                       ),
-                                      textAlign: TextAlign.center,
                                     ),
                                   ),
                                 );
@@ -278,12 +314,22 @@ class _HomeScreenState extends State<HomeScreen> {
                                   fontWeight: FontWeight.bold
                               ),
                             ),
-                            Text(
-                              "See All",
-                              style: TextStyle(
-                                  color: Colors.grey,
-                                  fontSize: Sizing.getProportionateScreenWidth(12),
-                                  fontWeight: FontWeight.bold
+                            InkWell(
+                              onTap: (){
+                                Navigator.push(
+                                    context,
+                                    CupertinoPageRoute(
+                                        builder: (context) => ProductsScreen(title: "Featured",)
+                                    )
+                                );
+                              },
+                              child: Text(
+                                "See All",
+                                style: TextStyle(
+                                    color: Colors.grey,
+                                    fontSize: Sizing.getProportionateScreenWidth(12),
+                                    fontWeight: FontWeight.bold
+                                ),
                               ),
                             ),
                           ],
