@@ -1,6 +1,7 @@
 import 'package:ecom_app_flutter/common/styles.dart';
 import 'package:ecom_app_flutter/screens/home/homeScreen.dart';
 import 'package:ecom_app_flutter/screens/catagories/categoriesScreen.dart';
+import 'package:ecom_app_flutter/screens/wishlist/wishlistScreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -116,7 +117,7 @@ class CustomBottomNavBar extends StatelessWidget {
                         Navigator.pushReplacement(
                             context,
                             CupertinoPageRoute(
-                                builder: (context) => HomeScreen()
+                                builder: (context) => WishlistScreen()
                             )
                         )
                       }

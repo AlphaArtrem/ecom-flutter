@@ -419,6 +419,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                           top: Sizing.getProportionateScreenHeight(145)
                                         ),
                                         child: Material(
+                                          color: Colors.white,
                                           elevation: 2.5,
                                           shape: RoundedRectangleBorder(
                                             borderRadius: BorderRadius.circular(25.0)
