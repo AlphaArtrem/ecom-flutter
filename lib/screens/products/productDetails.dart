@@ -315,7 +315,11 @@ class _ProductDetailsState extends State<ProductDetails> {
                 borderRadius: BorderRadius.circular(7.0),
               ),
               onPressed: (){
-                Navigator.pop(context);
+                if(cart.contains(widget.product)){
+                  cart[cart.indexOf(widget.product)].cartValue += 1;
+                }else{
+                  cart.add(widget.product);
+                }
               },
               color: Color.fromRGBO(238, 213, 26, 1),
               textColor: Colors.white,

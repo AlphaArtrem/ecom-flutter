@@ -9,7 +9,7 @@ class Product {
   final double rating, price;
   final bool isPopular;
   bool isFavourite;
-  final int cartValue = 1;
+  int cartValue = 1;
 
   Product({
     @required this.id,
@@ -113,3 +113,5 @@ List<Product> demoProducts = [
 
 const String description =
     "Product description will be placed here …";
+
+List<Product> cart = List.from(demoProducts);

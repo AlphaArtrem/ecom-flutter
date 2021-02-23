@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:ecom_app_flutter/screens/products/productsScreen.dart';
 import 'package:ecom_app_flutter/screens/catagories/categoriesScreen.dart';
 import 'package:ecom_app_flutter/screens/products/productDetails.dart';
+import 'package:ecom_app_flutter/screens/cart/cartScreen.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -74,7 +75,14 @@ class _HomeScreenState extends State<HomeScreen> {
                             color: Colors.white,
                             size: Sizing.getProportionateScreenHeight(20),
                           ),
-                          onPressed: (){}
+                          onPressed: (){
+                            Navigator.push(
+                                context,
+                                CupertinoPageRoute(
+                                  builder: (context) => CartScreen()
+                                )
+                            );
+                          }
                       ),
                     ],
                   ),
