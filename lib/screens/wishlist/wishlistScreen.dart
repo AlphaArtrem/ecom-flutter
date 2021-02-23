@@ -4,6 +4,7 @@ import 'package:ecom_app_flutter/common/bottomNavbar.dart';
 import 'package:ecom_app_flutter/common/sizing.dart';
 import 'package:ecom_app_flutter/common/styles.dart';
 import 'package:ecom_app_flutter/screens/home/homeScreen.dart';
+import 'package:ecom_app_flutter/screens/products/productDetails.dart';
 import 'package:ecom_app_flutter/static/products.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -14,8 +15,6 @@ class WishlistScreen extends StatefulWidget {
 }
 
 class _WishlistScreenState extends State<WishlistScreen> {
-  int selectedFilter = 0;
-  int sortFilter = 0;
   String filter = "Featured";
   List<Product> wishlistProducts = List<Product>.from(demoProducts);
 
@@ -33,152 +32,46 @@ class _WishlistScreenState extends State<WishlistScreen> {
         color: Colors.grey[100],
         child: Column(
           children: [
-            Stack(
-              children: [
-                Container(
-                  padding: EdgeInsets.symmetric(
-                      horizontal: Sizing.getProportionateScreenWidth(10)
-                  ),
-                  width: Sizing.screenWidth,
-                  height: Sizing.screenHeight * 0.15,
-                  decoration: BoxDecoration(
-                      gradient: kPrimaryGradientColor
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      IconButton(
-                          icon: Icon(
-                            Icons.arrow_back,
-                            color: Colors.white,
-                            size: Sizing.getProportionateScreenHeight(25),
-                          ),
-                          onPressed: (){
-                            Navigator.pushReplacement(
-                                context,
-                                CupertinoPageRoute(
-                                    builder: (context) => HomeScreen()
-                                )
-                            );
-                          }
-                      ),
-                      Expanded(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              "Wishlist",
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: Sizing.getProportionateScreenWidth(20),
-                                  fontWeight: FontWeight.bold
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                Container(
-                  margin: EdgeInsets.only(
-                    top: Sizing.screenHeight * 0.12,
-                    left: Sizing.screenWidth * 0.05,
-                    right: Sizing.screenWidth * 0.05,
-                  ),
-                  height: Sizing.getProportionateScreenHeight(50),
-                  child: Material(
-                    color: Colors.white,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(25)
-                    ),
-                    elevation: 2.5,
-                    child: Row(
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.only(
-                              left: Sizing.getProportionateScreenWidth(12),
-                              top: Sizing.getProportionateScreenHeight(4)
-                          ),
-                          child: Icon(
-                            Icons.search_sharp,
-                            color: Colors.grey,
-                            size: Sizing.getProportionateScreenWidth(35),
-                          ),
-                        ),
-                        Expanded(
-                          child: Padding(
-                            padding: EdgeInsets.only(
-                                left: Sizing.getProportionateScreenWidth(12),
-                                top: Sizing.getProportionateScreenHeight(2.5)
-                            ),
-                            child: TextFormField(
-                              decoration: InputDecoration(
-                                  border: InputBorder.none,
-                                  hintText: "What are you looking for ?",
-                                  hintStyle: TextStyle(
-                                      color: Colors.grey
-                                  )
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            SizedBox(
-              height: Sizing.getProportionateScreenHeight(15.0),
-            ),
             Container(
-              height: Sizing.getProportionateScreenHeight(30),
               padding: EdgeInsets.only(
-                  left: Sizing.getProportionateScreenWidth(30.0)
+                  left: Sizing.getProportionateScreenWidth(10),
+                  top: Sizing.getProportionateScreenHeight(25.0)
               ),
-              child: ListView.builder(
-                  padding: EdgeInsets.zero,
-                  itemCount: 11,
-                  scrollDirection: Axis.horizontal,
-                  itemBuilder: (context, index){
-                    return Padding(
-                      padding: EdgeInsets.only(
-                          right: Sizing.getProportionateScreenWidth(10.0)
-                      ),
-                      child: InkWell(
-                        onTap: (){
-                          setState(() {
-                            selectedFilter = index;
-                          });
-                        },
-                        child: Container(
-                          padding: EdgeInsets.symmetric(
-                              horizontal: Sizing.getProportionateScreenWidth(12.0),
-                              vertical: Sizing.getProportionateScreenHeight(3.0)
-                          ),
-                          decoration: BoxDecoration(
-                              color: selectedFilter == index ? kTextColor : Colors.white,
-                              borderRadius: BorderRadius.all(Radius.circular(12.0))
-                          ),
-                          child: Center(
-                            child: Text(
-                              index == 0 ? "All" : "Filter ${index + 1}",
-                              style: TextStyle(
-                                  color: selectedFilter == index ? Colors.white : kPrimaryColor.shade600,
-                                  fontSize: Sizing.getProportionateScreenWidth(12),
-                                  fontWeight: FontWeight.w400
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    );
-                  }
+              width: Sizing.screenWidth,
+              height: Sizing.screenHeight * 0.125,
+              decoration: BoxDecoration(
+                  gradient: kPrimaryGradientColor
               ),
-            ),
-            SizedBox(
-              height: Sizing.getProportionateScreenHeight(15.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  IconButton(
+                      icon: Icon(
+                        Icons.arrow_back,
+                        color: Colors.white,
+                        size: Sizing.getProportionateScreenHeight(25),
+                      ),
+                      onPressed: (){
+                        Navigator.pushReplacement(
+                            context,
+                            CupertinoPageRoute(
+                                builder: (context) => HomeScreen()
+                            )
+                        );
+                      }
+                  ),
+                  Expanded(child: Container(), flex: 2,),
+                  Text(
+                    "Wishlist",
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: Sizing.getProportionateScreenWidth(20),
+                        fontWeight: FontWeight.bold
+                    ),
+                  ),
+                  Expanded(child: Container(), flex: 3,)
+                ],
+              ),
             ),
             Padding(
               padding: EdgeInsets.symmetric(
@@ -188,7 +81,7 @@ class _WishlistScreenState extends State<WishlistScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    "20 Items",
+                    "4 Items",
                     style: TextStyle(
                         color: kPrimaryColor.shade900,
                         fontSize: Sizing.getProportionateScreenWidth(20),
@@ -255,20 +148,32 @@ class _WishlistScreenState extends State<WishlistScreen> {
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Container(
-                                margin: EdgeInsets.symmetric(
-                                  horizontal: Sizing.getProportionateScreenWidth(5),
-                                ),
-                                padding: EdgeInsets.symmetric(
-                                    horizontal: Sizing.getProportionateScreenWidth(20),
-                                    vertical: Sizing.getProportionateScreenHeight(15)
-                                ),
-                                height: Sizing.getProportionateScreenHeight(160),
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(7.0),
-                                  image: DecorationImage(
-                                    image: AssetImage(wishlistProducts[index].images[0]),
-                                    fit: BoxFit.cover,
+                              InkWell(
+                                onTap:(){
+                                  Navigator.push(
+                                      context,
+                                      CupertinoPageRoute(
+                                          builder: (context) => ProductDetails(
+                                            product: wishlistProducts[index],
+                                          )
+                                      )
+                                  );
+                                },
+                                child: Container(
+                                  margin: EdgeInsets.symmetric(
+                                    horizontal: Sizing.getProportionateScreenWidth(5),
+                                  ),
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal: Sizing.getProportionateScreenWidth(20),
+                                      vertical: Sizing.getProportionateScreenHeight(15)
+                                  ),
+                                  height: Sizing.getProportionateScreenHeight(160),
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(7.0),
+                                    image: DecorationImage(
+                                      image: AssetImage(wishlistProducts[index].images[0]),
+                                      fit: BoxFit.cover,
+                                    ),
                                   ),
                                 ),
                               ),
@@ -337,8 +242,8 @@ class _WishlistScreenState extends State<WishlistScreen> {
                                   padding: const EdgeInsets.all(6.0),
                                   child: Icon(
                                     wishlistProducts[index].isFavourite ?
-                                    Icons.thumb_up :
-                                    Icons.thumb_up_alt_outlined,
+                                    Icons.favorite :
+                                    Icons.favorite_border,
                                     color: wishlistProducts[index].isFavourite ?
                                     kTextColor : kPrimaryColor,
                                     size: Sizing.getProportionateScreenWidth(15),

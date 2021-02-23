@@ -2,6 +2,7 @@ import 'package:ecom_app_flutter/common/styles.dart';
 import 'package:ecom_app_flutter/screens/home/homeScreen.dart';
 import 'package:ecom_app_flutter/screens/catagories/categoriesScreen.dart';
 import 'package:ecom_app_flutter/screens/wishlist/wishlistScreen.dart';
+import 'package:ecom_app_flutter/screens/profile/profileScreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -107,7 +108,7 @@ class CustomBottomNavBar extends StatelessWidget {
                   IconButton(
                     padding: EdgeInsets.zero,
                     icon: Icon(
-                      Icons.thumb_up,
+                      2 == selectedMenu ? Icons.favorite : Icons.favorite_border,
                       color: 2 == selectedMenu
                           ? kPrimaryColor
                           : inActiveIconColor,
@@ -124,7 +125,7 @@ class CustomBottomNavBar extends StatelessWidget {
                     },
                   ),
                   Text(
-                    "Liked",
+                    "Wishlist",
                     style: TextStyle(color: 2 == selectedMenu
                         ? kPrimaryColor
                         : inActiveIconColor,),
@@ -148,7 +149,7 @@ class CustomBottomNavBar extends StatelessWidget {
                         Navigator.pushReplacement(
                             context,
                             CupertinoPageRoute(
-                                builder: (context) => HomeScreen()
+                                builder: (context) => ProfileScreen()
                             )
                         )
                       }

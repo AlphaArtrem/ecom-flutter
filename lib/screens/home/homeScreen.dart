@@ -8,6 +8,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:ecom_app_flutter/screens/products/productsScreen.dart';
 import 'package:ecom_app_flutter/screens/catagories/categoriesScreen.dart';
+import 'package:ecom_app_flutter/screens/products/productDetails.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -347,71 +348,83 @@ class _HomeScreenState extends State<HomeScreen> {
                                   width: Sizing.screenWidth / 2.4,
                                   child: Stack(
                                     children: [
-                                      Column(
-                                        mainAxisAlignment: MainAxisAlignment.start,
-                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                        children: [
-                                          Container(
-                                            margin: EdgeInsets.symmetric(
-                                              horizontal: Sizing.getProportionateScreenWidth(5),
-                                            ),
-                                            padding: EdgeInsets.symmetric(
-                                                horizontal: Sizing.getProportionateScreenWidth(20),
-                                                vertical: Sizing.getProportionateScreenHeight(15)
-                                            ),
-                                            width: Sizing.screenWidth / 2.4,
-                                            height: Sizing.getProportionateScreenHeight(160),
-                                            decoration: BoxDecoration(
-                                              borderRadius: BorderRadius.circular(7.0),
-                                              image: DecorationImage(
-                                                image: AssetImage(demoProducts[index].images[0]),
-                                                fit: BoxFit.cover,
+                                      InkWell(
+                                        onTap:(){
+                                          Navigator.push(
+                                              context,
+                                              CupertinoPageRoute(
+                                                builder: (context) => ProductDetails(
+                                                  product: demoProducts[index],
+                                                )
+                                              )
+                                          );
+                                        },
+                                        child: Column(
+                                          mainAxisAlignment: MainAxisAlignment.start,
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          children: [
+                                            Container(
+                                              margin: EdgeInsets.symmetric(
+                                                horizontal: Sizing.getProportionateScreenWidth(5),
+                                              ),
+                                              padding: EdgeInsets.symmetric(
+                                                  horizontal: Sizing.getProportionateScreenWidth(20),
+                                                  vertical: Sizing.getProportionateScreenHeight(15)
+                                              ),
+                                              width: Sizing.screenWidth / 2.4,
+                                              height: Sizing.getProportionateScreenHeight(160),
+                                              decoration: BoxDecoration(
+                                                borderRadius: BorderRadius.circular(7.0),
+                                                image: DecorationImage(
+                                                  image: AssetImage(demoProducts[index].images[0]),
+                                                  fit: BoxFit.cover,
+                                                ),
                                               ),
                                             ),
-                                          ),
-                                          Padding(
-                                            padding: const EdgeInsets.all(5.0),
-                                            child: Row(
-                                              children: List.generate(5, (i){
-                                                if(i <= demoProducts[index].rating){
-                                                  return Icon(
-                                                    Icons.star,
-                                                    color: kTextColor,
-                                                    size: Sizing.getProportionateScreenWidth(12),
-                                                  );
-                                                }else{
-                                                  return Icon(
-                                                    Icons.star_border,
-                                                    color: kTextColor,
-                                                    size: Sizing.getProportionateScreenWidth(12),
-                                                  );
-                                                }
-                                              }),
-                                            ),
-                                          ),
-                                          Padding(
-                                            padding: EdgeInsets.all(5.0),
-                                            child: Text(
-                                              demoProducts[index].title,
-                                              style: TextStyle(
-                                                  color: kPrimaryColor.shade900,
-                                                  fontSize: Sizing.getProportionateScreenWidth(12),
-                                                  fontWeight: FontWeight.w400
+                                            Padding(
+                                              padding: const EdgeInsets.all(5.0),
+                                              child: Row(
+                                                children: List.generate(5, (i){
+                                                  if(i <= demoProducts[index].rating){
+                                                    return Icon(
+                                                      Icons.star,
+                                                      color: kTextColor,
+                                                      size: Sizing.getProportionateScreenWidth(12),
+                                                    );
+                                                  }else{
+                                                    return Icon(
+                                                      Icons.star_border,
+                                                      color: kTextColor,
+                                                      size: Sizing.getProportionateScreenWidth(12),
+                                                    );
+                                                  }
+                                                }),
                                               ),
                                             ),
-                                          ),
-                                          Padding(
-                                            padding: EdgeInsets.all(5.0),
-                                            child: Text(
-                                              "\$" + demoProducts[index].price.toString(),
-                                              style: TextStyle(
-                                                  color: kPrimaryColor.shade900,
-                                                  fontSize: Sizing.getProportionateScreenWidth(15),
-                                                  fontWeight: FontWeight.w600
+                                            Padding(
+                                              padding: EdgeInsets.all(5.0),
+                                              child: Text(
+                                                demoProducts[index].title,
+                                                style: TextStyle(
+                                                    color: kPrimaryColor.shade900,
+                                                    fontSize: Sizing.getProportionateScreenWidth(12),
+                                                    fontWeight: FontWeight.w400
+                                                ),
                                               ),
                                             ),
-                                          ),
-                                        ],
+                                            Padding(
+                                              padding: EdgeInsets.all(5.0),
+                                              child: Text(
+                                                "\$" + demoProducts[index].price.toString(),
+                                                style: TextStyle(
+                                                    color: kPrimaryColor.shade900,
+                                                    fontSize: Sizing.getProportionateScreenWidth(15),
+                                                    fontWeight: FontWeight.w600
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
                                       ),
                                       Container(
                                         margin: EdgeInsets.only(
@@ -434,8 +447,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                               padding: const EdgeInsets.all(6.0),
                                               child: Icon(
                                                 demoProducts[index].isFavourite ?
-                                                Icons.thumb_up :
-                                                Icons.thumb_up_alt_outlined,
+                                                Icons.favorite :
+                                                Icons.favorite_border,
                                                 color: demoProducts[index].isFavourite ?
                                                 kTextColor : kPrimaryColor,
                                                 size: Sizing.getProportionateScreenWidth(15),

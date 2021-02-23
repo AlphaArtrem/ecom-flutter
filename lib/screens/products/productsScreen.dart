@@ -4,6 +4,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:ecom_app_flutter/common/bottomNavbar.dart';
 import 'package:ecom_app_flutter/common/sizing.dart';
 import 'package:ecom_app_flutter/common/styles.dart';
+import 'package:ecom_app_flutter/screens/products/productDetails.dart';
 import 'package:ecom_app_flutter/static/categories.dart';
 import 'package:ecom_app_flutter/static/products.dart';
 import 'package:flutter/cupertino.dart';
@@ -259,20 +260,32 @@ class _ProductsScreenState extends State<ProductsScreen> {
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Container(
-                              margin: EdgeInsets.symmetric(
-                                horizontal: Sizing.getProportionateScreenWidth(5),
-                              ),
-                              padding: EdgeInsets.symmetric(
-                                  horizontal: Sizing.getProportionateScreenWidth(20),
-                                  vertical: Sizing.getProportionateScreenHeight(15)
-                              ),
-                              height: Sizing.getProportionateScreenHeight(160),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(7.0),
-                                image: DecorationImage(
-                                  image: AssetImage(demoProducts[index].images[0]),
-                                  fit: BoxFit.cover,
+                            InkWell(
+                              onTap: (){
+                                Navigator.push(
+                                    context,
+                                    CupertinoPageRoute(
+                                        builder: (context) => ProductDetails(
+                                          product: demoProducts[index],
+                                        )
+                                    )
+                                );
+                              },
+                              child: Container(
+                                margin: EdgeInsets.symmetric(
+                                  horizontal: Sizing.getProportionateScreenWidth(5),
+                                ),
+                                padding: EdgeInsets.symmetric(
+                                    horizontal: Sizing.getProportionateScreenWidth(20),
+                                    vertical: Sizing.getProportionateScreenHeight(15)
+                                ),
+                                height: Sizing.getProportionateScreenHeight(160),
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(7.0),
+                                  image: DecorationImage(
+                                    image: AssetImage(demoProducts[index].images[0]),
+                                    fit: BoxFit.cover,
+                                  ),
                                 ),
                               ),
                             ),
@@ -341,8 +354,8 @@ class _ProductsScreenState extends State<ProductsScreen> {
                                 padding: const EdgeInsets.all(6.0),
                                 child: Icon(
                                   demoProducts[index].isFavourite ?
-                                  Icons.thumb_up :
-                                  Icons.thumb_up_alt_outlined,
+                                  Icons.favorite :
+                                  Icons.favorite_border,
                                   color: demoProducts[index].isFavourite ?
                                   kTextColor : kPrimaryColor,
                                   size: Sizing.getProportionateScreenWidth(15),

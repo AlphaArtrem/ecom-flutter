@@ -9,6 +9,7 @@ class Product {
   final double rating, price;
   final bool isPopular;
   bool isFavourite;
+  final int cartValue = 1;
 
   Product({
     @required this.id,
