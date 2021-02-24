@@ -17,6 +17,7 @@ dependencies:
   pin_code_fields: ^6.1.0
   carousel_slider: ^3.0.0
   fluttertoast: ^7.1.8
+  flutter_credit_card: ^0.1.4
 
 dev_dependencies:
   flutter_test:

@@ -10,7 +10,7 @@ class EComApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: "E-Com App",
+      title: "QuickieShop",
       theme: ThemeData(
           canvasColor: Colors.transparent,
         textTheme: TextTheme(

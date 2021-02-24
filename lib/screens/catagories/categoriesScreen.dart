@@ -2,6 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:ecom_app_flutter/common/bottomNavbar.dart';
 import 'package:ecom_app_flutter/common/sizing.dart';
 import 'package:ecom_app_flutter/common/styles.dart';
+import 'package:ecom_app_flutter/screens/cart/cartScreen.dart';
 import 'package:ecom_app_flutter/static/categories.dart';
 import 'package:ecom_app_flutter/static/products.dart';
 import 'package:flutter/cupertino.dart';
@@ -64,7 +65,14 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                             color: Colors.white,
                             size: Sizing.getProportionateScreenHeight(20),
                           ),
-                          onPressed: (){}
+                          onPressed: (){
+                            Navigator.push(
+                                context,
+                                CupertinoPageRoute(
+                                    builder: (context) => CartScreen()
+                                )
+                            );
+                          }
                       ),
                     ],
                   ),

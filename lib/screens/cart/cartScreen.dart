@@ -3,6 +3,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:ecom_app_flutter/common/bottomNavbar.dart';
 import 'package:ecom_app_flutter/common/sizing.dart';
 import 'package:ecom_app_flutter/common/styles.dart';
+import 'package:ecom_app_flutter/screens/cart/checkout.dart';
 import 'package:ecom_app_flutter/screens/home/homeScreen.dart';
 import 'package:ecom_app_flutter/screens/products/productDetails.dart';
 import 'package:ecom_app_flutter/static/products.dart';
@@ -270,7 +271,7 @@ class _CartScreenState extends State<CartScreen> {
                 Padding(
                   padding: EdgeInsets.only(right: Sizing.getProportionateScreenWidth(13.0)),
                   child: Text(
-                    "\$" + (cart.isEmpty ? "0" : totalCartValue()),
+                    "\$" + (cart.isEmpty ? "0" : totalCartValue().toStringAsFixed(2)),
                     style: TextStyle(
                         color: kPrimaryColor.shade900,
                         fontSize: Sizing.getProportionateScreenWidth(18),
@@ -291,6 +292,12 @@ class _CartScreenState extends State<CartScreen> {
                 borderRadius: BorderRadius.circular(7.0),
               ),
               onPressed: (){
+                Navigator.push(
+                    context,
+                    CupertinoPageRoute(
+                        builder: (context) => CheckoutScreen()
+                    )
+                );
               },
               color: Color.fromRGBO(238, 213, 26, 1),
               textColor: Colors.white,
@@ -316,10 +323,10 @@ class _CartScreenState extends State<CartScreen> {
   }
 }
 
-String totalCartValue(){
+double totalCartValue(){
   double total = 0;
   cart.forEach((element) {
     total += element.price * element.cartValue;
   });
-  return total.toStringAsFixed(2);
+  return total;
 }
